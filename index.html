@@ -4,83 +4,419 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07080d">
-<title>Sonsiro — Liquid Dock</title>
+<title>Sonsiro — Apps</title>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07080d;--text:#f8f9fc;--muted:#9299aa;--stroke:rgba(255,255,255,.13);--green:#b7ff80}
 body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(900px 550px at 8% -5%,rgba(116,78,255,.24),transparent 62%),radial-gradient(800px 600px at 95% 5%,rgba(44,205,255,.14),transparent 60%),#07080d;min-height:100vh;overflow-x:hidden}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25'/%3E%3C/svg%3E")}
 a{text-decoration:none;color:inherit}.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
 .glass{background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid var(--stroke);box-shadow:0 25px 90px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.07);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%)}
 header{position:sticky;top:15px;z-index:20;margin-top:15px;border-radius:22px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900}.logo{width:39px;height:39px;border-radius:14px;display:grid;place-items:center;color:#101609;background:linear-gradient(145deg,#e5ffcd,#72e66d);box-shadow:0 8px 35px rgba(137,255,108,.2)}
 nav a{color:var(--muted);font-size:13px;margin-left:18px}nav a:hover{color:#fff}
-.hero{min-height:620px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:45px;padding:70px 0}
+.hero{min-height:560px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:45px;padding:70px 0}
 .pill{color:var(--green);font-size:11px;font-weight:850;letter-spacing:.18em}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green);margin-right:7px}
 h1{font-size:clamp(55px,7vw,92px);line-height:.9;letter-spacing:-.075em;margin:20px 0}h1 span{color:transparent;background:linear-gradient(100deg,#fff,#aebcff,#a8ff78);background-clip:text;-webkit-background-clip:text}
 .hero p{max-width:590px;color:var(--muted);line-height:1.7}
 .search{margin-top:28px;width:min(600px,100%);height:59px;border-radius:18px;display:flex;align-items:center;padding:0 15px;gap:12px}.search input{flex:1;background:none;border:0;outline:0;color:#fff;font-size:15px}.search span{font-size:26px;color:#aaa}.search kbd{color:#89909e;border:1px solid var(--stroke);border-radius:7px;padding:5px 8px;font-size:10px}
-.visual{height:370px;position:relative;display:grid;place-items:center}.ring{position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;transform:rotate(-25deg)}.r1{width:360px;height:205px}.r2{width:250px;height:350px;transform:rotate(52deg)}.core{width:130px;height:130px;border-radius:40px;display:grid;place-items:center;font-size:52px;font-weight:950;color:#10170d;background:linear-gradient(145deg,#e4ffca,#73e56d);box-shadow:0 25px 80px rgba(128,255,105,.2);animation:float 5s ease-in-out infinite;z-index:2}@keyframes float{50%{transform:translateY(-11px) rotate(2deg)}}
-section.apps{padding-bottom:160px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.head h2{margin:0;font-size:28px}.head span{font-size:12px;color:var(--muted)}
-.filters{display:flex;gap:7px;margin-bottom:18px}.filter{border:1px solid var(--stroke);background:transparent;color:var(--muted);border-radius:999px;padding:9px 15px;cursor:pointer}.filter.active{background:#fff;color:#090a0d;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border-radius:24px;padding:19px;min-height:250px;transition:.3s}.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.25)}.icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(145deg,#292d3b,#10121a);border:1px solid var(--stroke);font-weight:900}.card h3{margin:20px 0 7px}.card p{font-size:13px;color:var(--muted);line-height:1.55}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:20px}.version{font-size:11px;color:var(--muted)}.download{font-size:12px;font-weight:800;background:#fff;color:#08090d;padding:10px 14px;border-radius:13px}
+.visual{height:350px;position:relative;display:grid;place-items:center}.ring{position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;transform:rotate(-25deg)}.r1{width:360px;height:205px}.r2{width:250px;height:350px;transform:rotate(52deg)}.core{width:130px;height:130px;border-radius:40px;display:grid;place-items:center;font-size:52px;font-weight:950;color:#10170d;background:linear-gradient(145deg,#e4ffca,#73e56d);box-shadow:0 25px 80px rgba(128,255,105,.2);animation:float 5s ease-in-out infinite;z-index:2}@keyframes float{50%{transform:translateY(-11px) rotate(2deg)}}
+.apps{padding-bottom:150px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.head h2{margin:0;font-size:28px}.head span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border-radius:24px;padding:19px;min-height:285px;transition:.3s;position:relative;overflow:hidden}.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.25)}.card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(146,125,255,.16),transparent 68%);right:-80px;top:-80px}.icon{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(145deg,#292d3b,#10121a);border:1px solid var(--stroke);font-weight:900;position:relative}.icon.tv{background:linear-gradient(145deg,#a9ff83,#56d77a);color:#0a1409}.icon.vpn{background:linear-gradient(145deg,#a8c7ff,#617cf2);color:#08112b}
+.tag{display:inline-block;margin-top:13px;padding:5px 8px;border:1px solid var(--stroke);border-radius:99px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em}
+.card h3{margin:14px 0 7px;font-size:20px}.card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;min-height:42px}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:22px}.version{font-size:11px;color:var(--muted)}.download{font-size:12px;font-weight:800;background:#fff;color:#08090d;padding:10px 14px;border-radius:13px}.download:hover{transform:scale(1.03)}
 footer{text-align:center;color:#626a7a;font-size:11px;padding:30px 0 120px}
-
 #liquidDock{position:fixed;z-index:100;left:50%;bottom:20px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:9px 10px;border-radius:28px;isolation:isolate}
 #liquidDock:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,rgba(255,255,255,.16),rgba(255,255,255,.045) 48%,rgba(255,255,255,.11));opacity:.9;z-index:-2}
 #liquidDock:after{content:"";position:absolute;inset:1px;border-radius:inherit;border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px rgba(255,255,255,.17),0 0 0 1px rgba(0,0,0,.18);z-index:-1;pointer-events:none}
 .liquid-light{position:absolute;width:95px;height:95px;border-radius:50%;background:radial-gradient(circle,rgba(178,255,139,.28),rgba(104,190,255,.13) 38%,transparent 70%);filter:blur(11px);pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .25s;z-index:-1}
 .dock-item{position:relative;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#b9bec9;font-size:23px;transition:transform .22s cubic-bezier(.2,.8,.2,1),background .2s,color .2s,box-shadow .2s;transform-origin:50% 100%}
-.dock-item:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));opacity:0;transition:.2s;z-index:-1}
-.dock-item:hover:before,.dock-item.active:before{opacity:1}
-.dock-item:hover,.dock-item.active{color:#fff;box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 28px rgba(0,0,0,.22)}
-.dock-item small{position:absolute;bottom:-23px;opacity:0;font-size:9px;color:#dfe3eb;transition:.2s;pointer-events:none}
-.dock-item:hover small{opacity:1}
-@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:60px}.visual{height:250px;order:-1}.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.wrap{width:calc(100% - 22px)}header{top:9px;margin-top:9px}header nav a:not(:last-child){display:none}.hero{padding:55px 4px}.hero h1{font-size:52px}.visual{height:200px}.core{width:88px;height:88px;font-size:35px;border-radius:28px}.r1{width:250px;height:145px}.r2{width:180px;height:230px}.grid{grid-template-columns:1fr}.search kbd{display:none}#liquidDock{bottom:11px}.dock-item{width:51px;height:51px;border-radius:16px;font-size:20px}}
+.dock-item:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));opacity:0;transition:.2s;z-index:-1}.dock-item:hover:before,.dock-item.active:before{opacity:1}.dock-item:hover,.dock-item.active{color:#fff;box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 28px rgba(0,0,0,.22)}.dock-item small{position:absolute;bottom:-23px;opacity:0;font-size:9px;color:#dfe3eb;transition:.2s;pointer-events:none}.dock-item:hover small{opacity:1}
+/* ===== COMPACT / MOBILE / ANDROID TV ===== */
+@media (max-width:1100px){
+  .wrap{width:min(1080px,calc(100% - 28px))}
+  .hero{min-height:470px;padding:45px 0}
+  .grid{gap:12px}
+  .card{min-height:235px;padding:15px}
+  .card h3{font-size:18px;margin:13px 0 5px}
+  .card p{font-size:12px;line-height:1.45}
+  .bottom{margin-top:14px}
+}
+
+@media (max-width:850px){
+  .hero{grid-template-columns:1fr;padding:45px 0 35px;min-height:auto}
+  .visual{height:190px;order:-1}
+  .core{width:92px;height:92px;font-size:38px;border-radius:29px}
+  .r1{width:250px;height:145px}.r2{width:180px;height:230px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{min-height:220px;border-radius:19px;padding:14px}
+  .icon{width:50px;height:50px;border-radius:15px;font-size:15px}
+  .tag{margin-top:9px;font-size:8px;padding:4px 7px}
+  .card h3{font-size:17px;margin:11px 0 5px}
+  .card p{font-size:11px;line-height:1.4;min-height:31px}
+  .bottom{margin-top:12px}
+  .download{font-size:11px;padding:8px 10px;border-radius:10px}
+  .version{font-size:10px}
+}
+
+@media (max-width:560px){
+  .wrap{width:calc(100% - 16px)}
+  header{top:7px;margin-top:7px;padding:7px 9px;border-radius:17px}
+  .logo{width:34px;height:34px;border-radius:11px}
+  header nav a:not(:last-child){display:none}
+  header nav a{font-size:11px;margin-left:9px}
+  .hero{padding:32px 2px 27px}
+  .pill{font-size:9px}
+  .hero h1{font-size:43px;line-height:.9;margin:13px 0 14px}
+  .hero p{font-size:12px;line-height:1.5;margin:0}
+  .visual{height:130px}
+  .core{width:68px;height:68px;font-size:28px;border-radius:22px}
+  .r1{width:190px;height:105px}.r2{width:135px;height:165px}
+  .search{height:48px;margin-top:17px;border-radius:14px;padding:0 11px}
+  .search span{font-size:20px}.search input{font-size:12px}.search kbd{display:none}
+  .apps{padding-bottom:105px}
+  .head{margin-bottom:11px}.head h2{font-size:22px}.head span{font-size:10px}
+  .grid{grid-template-columns:1fr 1fr;gap:8px}
+  .card{min-height:190px;border-radius:17px;padding:11px}
+  .icon{width:43px;height:43px;border-radius:13px;font-size:12px}
+  .tag{margin-top:7px;font-size:7px;letter-spacing:.07em;padding:3px 6px}
+  .card h3{font-size:14px;margin:9px 0 4px}
+  .card p{font-size:10px;line-height:1.32;min-height:28px}
+  .bottom{margin-top:9px}
+  .version{font-size:9px}.download{font-size:9px;padding:7px 8px;border-radius:9px}
+  #liquidDock{bottom:8px;padding:6px 7px;border-radius:20px;gap:3px}
+  .dock-item{width:43px;height:43px;border-radius:13px;font-size:17px}
+  .dock-item small{display:none}
+}
+
+@media (min-width:1101px) and (max-height:800px){
+  /* Android TV / landscape */
+  .wrap{width:min(1180px,calc(100% - 42px))}
+  header{margin-top:10px}
+  .hero{min-height:390px;padding:35px 0}
+  .hero h1{font-size:66px}
+  .visual{height:270px}
+  .core{width:105px;height:105px;font-size:43px;border-radius:32px}
+  .r1{width:290px;height:165px}.r2{width:205px;height:285px}
+  .apps{padding-bottom:110px}
+  .grid{grid-template-columns:repeat(4,1fr);gap:12px}
+  .card{min-height:220px;padding:14px;border-radius:19px}
+  .icon{width:50px;height:50px;border-radius:15px}
+  .card h3{font-size:17px;margin:12px 0 5px}
+  .card p{font-size:11px;line-height:1.4}
+  .bottom{margin-top:13px}
+}
+
+/* TV remote / keyboard focus */
+.dock-item:focus-visible,.download:focus-visible,header a:focus-visible{
+  outline:3px solid var(--green);
+  outline-offset:3px;
+  transform:scale(1.08);
+}
+@media (hover:none){
+  .card:hover{transform:none}
+}
+
+
+/* ===== CLEAN COMPACT HERO ===== */
+@media (max-width:560px){
+  .hero{
+    padding:18px 2px 20px;
+    gap:10px;
+  }
+  .visual{
+    height:112px;
+    margin-bottom:0;
+  }
+  .core{
+    width:64px;
+    height:64px;
+    font-size:27px;
+    border-radius:20px;
+    box-shadow:0 18px 55px rgba(128,255,105,.18);
+  }
+  .core:after{
+    width:86px;
+    height:86px;
+    border-radius:25px;
+  }
+  .r1{width:185px;height:92px}
+  .r2{width:130px;height:150px}
+  .pill{
+    font-size:8px;
+    letter-spacing:.16em;
+    margin-bottom:5px;
+  }
+  .dot{width:6px;height:6px;margin-right:6px}
+  .hero h1{display:none;}
+  .hero p{
+    font-size:11px;
+    line-height:1.35;
+    margin:0;
+    color:#8e96a6;
+  }
+  .search{
+    height:44px;
+    margin-top:13px;
+    border-radius:13px;
+    padding:0 10px;
+  }
+  .search span{font-size:18px}
+  .search input{font-size:11px}
+  .apps{
+    padding-bottom:95px;
+  }
+  .head h2{font-size:20px}
+}
+
+/* Extra-small phones */
+@media (max-width:380px){
+  .visual{height:96px}
+  .core{width:58px;height:58px;font-size:24px}
+  .core:after{width:78px;height:78px}
+  .r1{width:165px;height:82px}
+  .r2{width:116px;height:136px}
+  .hero h1{display:none}
+  .hero p{font-size:10px}
+}
+
+/* Landscape Android TV: compact hero */
+@media (min-width:1101px) and (max-height:800px){
+  .hero{
+    min-height:360px;
+    padding:25px 0 30px;
+  }
+  .hero h1{display:none;}
+  .hero p{
+    max-width:430px;
+    font-size:12px;
+  }
+  .search{
+    height:50px;
+    margin-top:16px;
+  }
+}
+
+
+/* ===== CATEGORY HEADER ===== */
+.category-header{gap:10px}
+.categories{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.categories::-webkit-scrollbar{display:none}
+.cat{
+  border:1px solid transparent;
+  background:transparent;
+  color:#9299aa;
+  padding:8px 11px;
+  border-radius:12px;
+  font:600 11px/1 inherit;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.cat:hover{color:#fff;background:rgba(255,255,255,.07)}
+.cat.active{
+  color:#0b1208;
+  background:linear-gradient(135deg,#e7ffd2,#8af27e);
+  box-shadow:0 5px 20px rgba(132,255,113,.12);
+}
+@media(max-width:700px){
+  .category-header{padding:6px 7px}
+  .category-header .brand{flex:0 0 auto}
+  .category-header .logo{width:34px;height:34px;border-radius:11px}
+  .category-header .brand{font-size:13px}
+  .categories{flex:1;justify-content:flex-end}
+  .cat{padding:7px 9px;font-size:9px}
+}
+@media(max-width:480px){
+  .category-header{display:block}
+  .category-header .brand{display:flex;margin-bottom:6px}
+  .categories{justify-content:flex-start}
+  .cat{padding:6px 9px}
+}
+
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="glass"><a class="brand" href="#"><span class="logo">S</span> SONSIRO</a><nav><a href="#apps">Apps</a><a href="#about">About</a><a href="https://github.com/Sonsiro/sonsiro" target="_blank">GitHub ↗</a></nav></header>
+<header class="glass category-header">
+  <a class="brand" href="#" aria-label="Sonsiro Home"><span class="logo">S</span> SONSIRO</a>
+  <nav class="categories" aria-label="Danh mục ứng dụng">
+    <button class="cat active" data-cat="all">Tất cả</button>
+    <button class="cat" data-cat="tv">TV</button>
+    <button class="cat" data-cat="android">Android</button>
+    <button class="cat" data-cat="vpn">VPN</button>
+    <button class="cat" data-cat="tools">Tools</button>
+  </nav>
+</header>
 
 <section class="hero">
-<div><div class="pill"><i class="dot"></i> SONSIRO APP STORE</div><h1>Apps.<br><span>Beautifully simple.</span></h1><p>Kho ứng dụng Sonsiro với giao diện Liquid Glass, animation mượt và Dock tương tác như macOS.</p><div class="search glass"><span>⌕</span><input id="search" placeholder="Tìm ứng dụng..."><kbd>⌘ K</kbd></div></div>
-<div class="visual"><div class="ring r1"></div><div class="ring r2"></div><div class="core">S</div></div>
+<div>
+<div class="pill"><i class="dot"></i> SONSIRO APP STORE</div>
+<p>Ứng dụng của bạn, tải nhanh và đơn giản.</p>
+<div class="search glass"><span>⌕</span><input id="search" placeholder="Tìm ứng dụng..." autocomplete="off"><kbd>⌘ K</kbd></div>
+</div>
 </section>
 
-<section class="apps" id="apps"><div class="head"><h2>Ứng dụng</h2><span id="count"></span></div><div class="filters"><button class="filter active" data-f="all">Tất cả</button><button class="filter" data-f="android">Android</button><button class="filter" data-f="windows">Windows</button><button class="filter" data-f="tools">Tools</button></div><div class="grid" id="grid"></div></section>
+<section class="apps" id="apps">
+<div class="head"><h2>Ứng dụng</h2><span id="count">3 ứng dụng</span></div>
+<div class="grid" id="grid"></div>
+</section>
 </div>
 
 <div id="liquidDock" class="glass">
 <div class="liquid-light" id="light"></div>
-<a class="dock-item active" href="#"><span>⌂</span><small>Home</small></a>
-<a class="dock-item" href="#apps"><span>▦</span><small>Apps</small></a>
-<a class="dock-item" href="#apps"><span>⬇</span><small>Download</small></a>
-<a class="dock-item" href="https://github.com/Sonsiro/sonsiro" target="_blank"><span>◈</span><small>GitHub</small></a>
+<a class="dock-item active" href="#" tabindex="0"><span>⌂</span><small>Home</small></a>
+<a class="dock-item" href="#apps" tabindex="0"><span>▦</span><small>Apps</small></a>
+<a class="dock-item" href="https://github.com/Sonsiro/sonsiro.github.io/releases" target="_blank" tabindex="0"><span>⬇</span><small>Releases</small></a>
+<a class="dock-item" href="https://github.com/Sonsiro/sonsiro" target="_blank" tabindex="0"><span>◈</span><small>GitHub</small></a>
 </div>
-<footer id="about">© 2026 Sonsiro · Liquid Glass App Store</footer>
+
+<footer>© 2026 Sonsiro · Liquid Glass App Store</footer>
 
 <script>
 const apps=[
-["Sonsiro VPN","android","SV","Kết nối VPN nhanh, gọn và dễ sử dụng.","v1.0.0"],
-["M3U Player","android","M3","Trình phát playlist M3U với giao diện hiện đại.","v2.1.0"],
-["Sonsiro Tools","tools","ST","Bộ công cụ tiện ích cho công việc hằng ngày.","v1.4.2"],
-["Xray Config","android","XR","Quản lý và nhập cấu hình VLESS / Xray.","v1.2.0"],
-["Sonsiro Desktop","windows","SD","Ứng dụng desktop dành cho Windows.","v1.0.0"],
-["File Manager","android","FM","Quản lý file nhanh với Liquid Glass.","v1.1.5"]
+{
+ name:"SIRO-TV",
+ type:"Android TV",
+ cat:"tv",
+ icon:"TV",
+ cls:"tv",
+ desc:"Ứng dụng xem TV dành cho Android TV.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-ATV.apk"
+},
+{
+ name:"SIRO-TV",
+ type:"Android Phone",
+ cat:"android",
+ icon:"TV",
+ cls:"tv",
+ desc:"Ứng dụng SIRO-TV dành cho điện thoại Android.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-TV.apk"
+},
+{
+ name:"SIRO-VPN",
+ type:"VPN",
+ cat:"vpn",
+ icon:"VPN",
+ cls:"vpn",
+ desc:"Ứng dụng VPN Sonsiro cho Android.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-VPN.apk"
+},
+{
+ name:"TizenTube",
+ type:"Samsung Tizen TV",
+ cat:"tv",
+ icon:"TT",
+ cls:"tv",
+ desc:"Ứng dụng YouTube dành cho TV Samsung chạy Tizen.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/tizenyoutube.apk"
+},
+{
+ name:"SmartTube",
+ type:"Android TV",
+ cat:"tv",
+ icon:"ST",
+ cls:"tv",
+ desc:"SmartTube Stable — ứng dụng YouTube tối ưu cho Android TV.",
+ version:"Stable",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/smarttube.apk"
+},
+{
+ name:"Get Out",
+ type:"Android",
+ cat:"tools",
+ icon:"GO",
+ cls:"",
+ desc:"Ứng dụng Get Out dành cho Android.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/getout.apk"
+},
+{
+ name:"1.1.1.1 Mod",
+ type:"VPN",
+ cat:"vpn",
+ icon:"1.1",
+ cls:"vpn",
+ desc:"1.1.1.1 Mod — ứng dụng VPN cho Android.",
+ version:"Latest",
+ url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/1.1.1.1.apk"
+}
 ];
-let filter="all";const grid=document.querySelector("#grid"),search=document.querySelector("#search"),count=document.querySelector("#count");
-function render(){const q=search.value.toLowerCase().trim(),a=apps.filter(x=>(filter==="all"||x[1]===filter)&&(!q||(x[0]+" "+x[3]).toLowerCase().includes(q)));grid.innerHTML=a.map(x=>`<article class="card glass"><div class="icon">${x[2]}</div><h3>${x[0]}</h3><p>${x[3]}</p><div class="bottom"><span class="version">${x[4]}</span><a class="download" href="#">Tải xuống ↓</a></div></article>`).join("");count.textContent=a.length+" ứng dụng"}
-document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.f;render()});search.oninput=render;render();
+
+const grid=document.querySelector("#grid");
+const search=document.querySelector("#search");
+const cats=[...document.querySelectorAll(".cat")];
+let activeCat="all";
+
+function render(){
+ const q=search.value.toLowerCase().trim();
+ const list=apps.filter(a=>{
+   const categoryOk=activeCat==="all" || a.cat===activeCat;
+   const textOk=(a.name+" "+a.type+" "+a.desc).toLowerCase().includes(q);
+   return categoryOk && textOk;
+ });
+ grid.innerHTML=list.map(a=>`
+ <article class="card glass">
+   <div class="icon ${a.cls}">${a.icon}</div>
+   <span class="tag">${a.type}</span>
+   <h3>${a.name}</h3>
+   <p>${a.desc}</p>
+   <div class="bottom">
+     <span class="version">${a.version}</span>
+     <a class="download" href="${a.url}">Tải xuống ↓</a>
+   </div>
+ </article>`).join("");
+ document.querySelector("#count").textContent=list.length+" ứng dụng";
+}
+
+cats.forEach(btn=>{
+ btn.addEventListener("click",()=>{
+   activeCat=btn.dataset.cat;
+   cats.forEach(x=>x.classList.toggle("active",x===btn));
+   document.querySelector("#apps").scrollIntoView({behavior:"smooth",block:"start"});
+   render();
+ });
+});
+
+search.addEventListener("input",render);
+document.addEventListener("keydown",e=>{
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){
+   e.preventDefault();search.focus();
+ }
+});
+render();
 
 const dock=document.querySelector("#liquidDock"),items=[...document.querySelectorAll(".dock-item")],light=document.querySelector("#light");
 dock.addEventListener("mousemove",e=>{
- const r=dock.getBoundingClientRect(),x=e.clientX-r.left;light.style.left=x+"px";light.style.top=(e.clientY-r.top)+"px";light.style.opacity=1;
- items.forEach(item=>{const ir=item.getBoundingClientRect(),cx=ir.left+ir.width/2,d=Math.abs(e.clientX-cx);let s=Math.max(1,1.48-d/115);item.style.transform=`translateY(${-(s-1)*13}px) scale(${s})`});
+ const r=dock.getBoundingClientRect(),x=e.clientX-r.left;
+ light.style.left=x+"px";light.style.top=(e.clientY-r.top)+"px";light.style.opacity=1;
+ items.forEach(item=>{
+   const ir=item.getBoundingClientRect(),cx=ir.left+ir.width/2,d=Math.abs(e.clientX-cx);
+   const s=Math.max(1,1.48-d/115);
+   item.style.transform=`translateY(${-(s-1)*13}px) scale(${s})`;
+ });
 });
-dock.addEventListener("mouseleave",()=>{light.style.opacity=0;items.forEach(i=>i.style.transform="")});
-document.onkeydown=e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();search.focus()}};
+dock.addEventListener("mouseleave",()=>{
+ light.style.opacity=0;
+ items.forEach(i=>i.style.transform="");
+});
 </script>
 </body>
 </html>
+<style>
+.visual{display:none!important}
+.hero{grid-template-columns:1fr!important;min-height:auto!important}
+@media(max-width:560px){
+  .hero{padding-top:18px!important;padding-bottom:18px!important;gap:0!important}
+}
+</style>
