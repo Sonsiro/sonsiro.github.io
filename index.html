@@ -1,422 +1,368 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07080d">
-<title>Sonsiro — Apps</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--bg:#07080d;--text:#f8f9fc;--muted:#9299aa;--stroke:rgba(255,255,255,.13);--green:#b7ff80}
-body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(900px 550px at 8% -5%,rgba(116,78,255,.24),transparent 62%),radial-gradient(800px 600px at 95% 5%,rgba(44,205,255,.14),transparent 60%),#07080d;min-height:100vh;overflow-x:hidden}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25'/%3E%3C/svg%3E")}
-a{text-decoration:none;color:inherit}.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
-.glass{background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid var(--stroke);box-shadow:0 25px 90px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.07);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%)}
-header{position:sticky;top:15px;z-index:20;margin-top:15px;border-radius:22px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900}.logo{width:39px;height:39px;border-radius:14px;display:grid;place-items:center;color:#101609;background:linear-gradient(145deg,#e5ffcd,#72e66d);box-shadow:0 8px 35px rgba(137,255,108,.2)}
-nav a{color:var(--muted);font-size:13px;margin-left:18px}nav a:hover{color:#fff}
-.hero{min-height:560px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:45px;padding:70px 0}
-.pill{color:var(--green);font-size:11px;font-weight:850;letter-spacing:.18em}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green);margin-right:7px}
-h1{font-size:clamp(55px,7vw,92px);line-height:.9;letter-spacing:-.075em;margin:20px 0}h1 span{color:transparent;background:linear-gradient(100deg,#fff,#aebcff,#a8ff78);background-clip:text;-webkit-background-clip:text}
-.hero p{max-width:590px;color:var(--muted);line-height:1.7}
-.search{margin-top:28px;width:min(600px,100%);height:59px;border-radius:18px;display:flex;align-items:center;padding:0 15px;gap:12px}.search input{flex:1;background:none;border:0;outline:0;color:#fff;font-size:15px}.search span{font-size:26px;color:#aaa}.search kbd{color:#89909e;border:1px solid var(--stroke);border-radius:7px;padding:5px 8px;font-size:10px}
-.visual{height:350px;position:relative;display:grid;place-items:center}.ring{position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;transform:rotate(-25deg)}.r1{width:360px;height:205px}.r2{width:250px;height:350px;transform:rotate(52deg)}.core{width:130px;height:130px;border-radius:40px;display:grid;place-items:center;font-size:52px;font-weight:950;color:#10170d;background:linear-gradient(145deg,#e4ffca,#73e56d);box-shadow:0 25px 80px rgba(128,255,105,.2);animation:float 5s ease-in-out infinite;z-index:2}@keyframes float{50%{transform:translateY(-11px) rotate(2deg)}}
-.apps{padding-bottom:150px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.head h2{margin:0;font-size:28px}.head span{font-size:12px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border-radius:24px;padding:19px;min-height:285px;transition:.3s;position:relative;overflow:hidden}.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.25)}.card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(146,125,255,.16),transparent 68%);right:-80px;top:-80px}.icon{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(145deg,#292d3b,#10121a);border:1px solid var(--stroke);font-weight:900;position:relative}.icon.tv{background:linear-gradient(145deg,#a9ff83,#56d77a);color:#0a1409}.icon.vpn{background:linear-gradient(145deg,#a8c7ff,#617cf2);color:#08112b}
-.tag{display:inline-block;margin-top:13px;padding:5px 8px;border:1px solid var(--stroke);border-radius:99px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em}
-.card h3{margin:14px 0 7px;font-size:20px}.card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;min-height:42px}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:22px}.version{font-size:11px;color:var(--muted)}.download{font-size:12px;font-weight:800;background:#fff;color:#08090d;padding:10px 14px;border-radius:13px}.download:hover{transform:scale(1.03)}
-footer{text-align:center;color:#626a7a;font-size:11px;padding:30px 0 120px}
-#liquidDock{position:fixed;z-index:100;left:50%;bottom:20px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:9px 10px;border-radius:28px;isolation:isolate}
-#liquidDock:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,rgba(255,255,255,.16),rgba(255,255,255,.045) 48%,rgba(255,255,255,.11));opacity:.9;z-index:-2}
-#liquidDock:after{content:"";position:absolute;inset:1px;border-radius:inherit;border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px rgba(255,255,255,.17),0 0 0 1px rgba(0,0,0,.18);z-index:-1;pointer-events:none}
-.liquid-light{position:absolute;width:95px;height:95px;border-radius:50%;background:radial-gradient(circle,rgba(178,255,139,.28),rgba(104,190,255,.13) 38%,transparent 70%);filter:blur(11px);pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .25s;z-index:-1}
-.dock-item{position:relative;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#b9bec9;font-size:23px;transition:transform .22s cubic-bezier(.2,.8,.2,1),background .2s,color .2s,box-shadow .2s;transform-origin:50% 100%}
-.dock-item:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));opacity:0;transition:.2s;z-index:-1}.dock-item:hover:before,.dock-item.active:before{opacity:1}.dock-item:hover,.dock-item.active{color:#fff;box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 28px rgba(0,0,0,.22)}.dock-item small{position:absolute;bottom:-23px;opacity:0;font-size:9px;color:#dfe3eb;transition:.2s;pointer-events:none}.dock-item:hover small{opacity:1}
-/* ===== COMPACT / MOBILE / ANDROID TV ===== */
-@media (max-width:1100px){
-  .wrap{width:min(1080px,calc(100% - 28px))}
-  .hero{min-height:470px;padding:45px 0}
-  .grid{gap:12px}
-  .card{min-height:235px;padding:15px}
-  .card h3{font-size:18px;margin:13px 0 5px}
-  .card p{font-size:12px;line-height:1.45}
-  .bottom{margin-top:14px}
-}
-
-@media (max-width:850px){
-  .hero{grid-template-columns:1fr;padding:45px 0 35px;min-height:auto}
-  .visual{height:190px;order:-1}
-  .core{width:92px;height:92px;font-size:38px;border-radius:29px}
-  .r1{width:250px;height:145px}.r2{width:180px;height:230px}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .card{min-height:220px;border-radius:19px;padding:14px}
-  .icon{width:50px;height:50px;border-radius:15px;font-size:15px}
-  .tag{margin-top:9px;font-size:8px;padding:4px 7px}
-  .card h3{font-size:17px;margin:11px 0 5px}
-  .card p{font-size:11px;line-height:1.4;min-height:31px}
-  .bottom{margin-top:12px}
-  .download{font-size:11px;padding:8px 10px;border-radius:10px}
-  .version{font-size:10px}
-}
-
-@media (max-width:560px){
-  .wrap{width:calc(100% - 16px)}
-  header{top:7px;margin-top:7px;padding:7px 9px;border-radius:17px}
-  .logo{width:34px;height:34px;border-radius:11px}
-  header nav a:not(:last-child){display:none}
-  header nav a{font-size:11px;margin-left:9px}
-  .hero{padding:32px 2px 27px}
-  .pill{font-size:9px}
-  .hero h1{font-size:43px;line-height:.9;margin:13px 0 14px}
-  .hero p{font-size:12px;line-height:1.5;margin:0}
-  .visual{height:130px}
-  .core{width:68px;height:68px;font-size:28px;border-radius:22px}
-  .r1{width:190px;height:105px}.r2{width:135px;height:165px}
-  .search{height:48px;margin-top:17px;border-radius:14px;padding:0 11px}
-  .search span{font-size:20px}.search input{font-size:12px}.search kbd{display:none}
-  .apps{padding-bottom:105px}
-  .head{margin-bottom:11px}.head h2{font-size:22px}.head span{font-size:10px}
-  .grid{grid-template-columns:1fr 1fr;gap:8px}
-  .card{min-height:190px;border-radius:17px;padding:11px}
-  .icon{width:43px;height:43px;border-radius:13px;font-size:12px}
-  .tag{margin-top:7px;font-size:7px;letter-spacing:.07em;padding:3px 6px}
-  .card h3{font-size:14px;margin:9px 0 4px}
-  .card p{font-size:10px;line-height:1.32;min-height:28px}
-  .bottom{margin-top:9px}
-  .version{font-size:9px}.download{font-size:9px;padding:7px 8px;border-radius:9px}
-  #liquidDock{bottom:8px;padding:6px 7px;border-radius:20px;gap:3px}
-  .dock-item{width:43px;height:43px;border-radius:13px;font-size:17px}
-  .dock-item small{display:none}
-}
-
-@media (min-width:1101px) and (max-height:800px){
-  /* Android TV / landscape */
-  .wrap{width:min(1180px,calc(100% - 42px))}
-  header{margin-top:10px}
-  .hero{min-height:390px;padding:35px 0}
-  .hero h1{font-size:66px}
-  .visual{height:270px}
-  .core{width:105px;height:105px;font-size:43px;border-radius:32px}
-  .r1{width:290px;height:165px}.r2{width:205px;height:285px}
-  .apps{padding-bottom:110px}
-  .grid{grid-template-columns:repeat(4,1fr);gap:12px}
-  .card{min-height:220px;padding:14px;border-radius:19px}
-  .icon{width:50px;height:50px;border-radius:15px}
-  .card h3{font-size:17px;margin:12px 0 5px}
-  .card p{font-size:11px;line-height:1.4}
-  .bottom{margin-top:13px}
-}
-
-/* TV remote / keyboard focus */
-.dock-item:focus-visible,.download:focus-visible,header a:focus-visible{
-  outline:3px solid var(--green);
-  outline-offset:3px;
-  transform:scale(1.08);
-}
-@media (hover:none){
-  .card:hover{transform:none}
-}
-
-
-/* ===== CLEAN COMPACT HERO ===== */
-@media (max-width:560px){
-  .hero{
-    padding:18px 2px 20px;
-    gap:10px;
-  }
-  .visual{
-    height:112px;
-    margin-bottom:0;
-  }
-  .core{
-    width:64px;
-    height:64px;
-    font-size:27px;
-    border-radius:20px;
-    box-shadow:0 18px 55px rgba(128,255,105,.18);
-  }
-  .core:after{
-    width:86px;
-    height:86px;
-    border-radius:25px;
-  }
-  .r1{width:185px;height:92px}
-  .r2{width:130px;height:150px}
-  .pill{
-    font-size:8px;
-    letter-spacing:.16em;
-    margin-bottom:5px;
-  }
-  .dot{width:6px;height:6px;margin-right:6px}
-  .hero h1{display:none;}
-  .hero p{
-    font-size:11px;
-    line-height:1.35;
-    margin:0;
-    color:#8e96a6;
-  }
-  .search{
-    height:44px;
-    margin-top:13px;
-    border-radius:13px;
-    padding:0 10px;
-  }
-  .search span{font-size:18px}
-  .search input{font-size:11px}
-  .apps{
-    padding-bottom:95px;
-  }
-  .head h2{font-size:20px}
-}
-
-/* Extra-small phones */
-@media (max-width:380px){
-  .visual{height:96px}
-  .core{width:58px;height:58px;font-size:24px}
-  .core:after{width:78px;height:78px}
-  .r1{width:165px;height:82px}
-  .r2{width:116px;height:136px}
-  .hero h1{display:none}
-  .hero p{font-size:10px}
-}
-
-/* Landscape Android TV: compact hero */
-@media (min-width:1101px) and (max-height:800px){
-  .hero{
-    min-height:360px;
-    padding:25px 0 30px;
-  }
-  .hero h1{display:none;}
-  .hero p{
-    max-width:430px;
-    font-size:12px;
-  }
-  .search{
-    height:50px;
-    margin-top:16px;
-  }
-}
-
-
-/* ===== CATEGORY HEADER ===== */
-.category-header{gap:10px}
-.categories{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-.categories::-webkit-scrollbar{display:none}
-.cat{
-  border:1px solid transparent;
-  background:transparent;
-  color:#9299aa;
-  padding:8px 11px;
-  border-radius:12px;
-  font:600 11px/1 inherit;
-  white-space:nowrap;
-  cursor:pointer;
-  transition:.2s ease;
-}
-.cat:hover{color:#fff;background:rgba(255,255,255,.07)}
-.cat.active{
-  color:#0b1208;
-  background:linear-gradient(135deg,#e7ffd2,#8af27e);
-  box-shadow:0 5px 20px rgba(132,255,113,.12);
-}
-@media(max-width:700px){
-  .category-header{padding:6px 7px}
-  .category-header .brand{flex:0 0 auto}
-  .category-header .logo{width:34px;height:34px;border-radius:11px}
-  .category-header .brand{font-size:13px}
-  .categories{flex:1;justify-content:flex-end}
-  .cat{padding:7px 9px;font-size:9px}
-}
-@media(max-width:480px){
-  .category-header{display:block}
-  .category-header .brand{display:flex;margin-bottom:6px}
-  .categories{justify-content:flex-start}
-  .cat{padding:6px 9px}
-}
-
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d9f1f6">
+  <meta name="description" content="Ứng dụng của bạn, tải nhanh và đơn giản.">
+  <title>Sonsiro — Apps</title>
+  <link rel="stylesheet" href="input-navigation.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172a3b;
+      --muted: #607487;
+      --green: #168b54;
+      --glass: rgba(255, 255, 255, .47);
+      --line: rgba(255, 255, 255, .8);
+      --shadow: 0 20px 65px rgba(49, 104, 123, .13), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 4% 17%, rgba(116, 205, 255, .56), transparent 34rem),
+        radial-gradient(ellipse at 96% 12%, rgba(255, 235, 143, .58), transparent 34rem),
+        radial-gradient(ellipse at 48% 75%, rgba(145, 231, 178, .50), transparent 36rem),
+        radial-gradient(ellipse at 71% 43%, rgba(177, 170, 255, .17), transparent 27rem),
+        linear-gradient(135deg, #e5f7fb 0%, #edf8ec 50%, #fff8dd 100%);
+      background-attachment: fixed;
+    }
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      pointer-events: none;
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+    body::before { width: 58vw; height: 58vw; left: -30vw; top: 22vh; box-shadow: inset -18px 8px 45px rgba(255,255,255,.35), 0 0 60px rgba(255,255,255,.34); }
+    body::after { width: 48vw; height: 48vw; right: -23vw; top: 45vh; box-shadow: inset 16px -12px 45px rgba(255,255,255,.35), 0 0 60px rgba(255,255,255,.34); }
+    button, input { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, 86%); margin: 0 auto; }
+    .glass {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.65), rgba(255,255,255,.31) 54%, rgba(255,255,255,.49));
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(24px) saturate(155%);
+      backdrop-filter: blur(24px) saturate(155%);
+    }
+    .topbar {
+      position: sticky;
+      z-index: 10;
+      top: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 70px;
+      margin-top: 7px;
+      padding: 10px 14px 10px 17px;
+      border-radius: 23px;
+    }
+    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.035em; }
+    .logo {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 15px;
+      color: #08643c;
+      font-size: 24px;
+      font-weight: 950;
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(126,232,161,.77));
+      box-shadow: inset 0 1px 2px #fff, 0 7px 22px rgba(28, 150, 87, .2);
+      text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    }
+    .categories { display: flex; flex: 0 0 auto; align-items: center; gap: 4px; margin: 0 auto; overflow-x: auto; padding: 3px; border: 1px solid rgba(255,255,255,.64); border-radius: 999px; background: rgba(255,255,255,.22); scrollbar-width: none; }
+    .categories::-webkit-scrollbar { display: none; }
+    .cat {
+      flex: 0 0 auto;
+      padding: 10px 15px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      color: #506779;
+      background: transparent;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 650;
+      transition: .2s ease;
+    }
+    .cat:hover { color: var(--ink); background: rgba(255,255,255,.38); }
+    .cat.active {
+      color: #0c603c;
+      border-color: rgba(255,255,255,.88);
+      background: linear-gradient(140deg, rgba(255,255,255,.8), rgba(148,239,174,.66));
+      box-shadow: inset 0 1px 0 #fff, 0 5px 20px rgba(91, 198, 125, .2);
+    }
+    .hero { padding: 19px 0 9px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #168353; font-size: 11px; font-weight: 850; letter-spacing: .18em; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #53c779; box-shadow: 0 0 15px rgba(67,199,111,.72); }
+    h1 { margin: 0 0 4px; font-size: clamp(28px, 3vw, 36px); line-height: 1; letter-spacing: -.065em; font-weight: 850; }
+    .hero-mark { display: block; width: clamp(160px, 18vw, 230px); height: auto; margin: -10px auto 0; filter: drop-shadow(0 10px 18px rgba(39, 126, 132, .2)); }
+    .intro { margin: 0 auto; color: #50687d; font-size: 12px; }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(320px, 100%);
+      height: 36px;
+      flex: 0 1 320px;
+      margin: 10px auto 0;
+      padding: 0 11px 0 14px;
+      border-radius: 14px;
+      text-align: left;
+    }
+    .search-icon { display: grid; flex: 0 0 auto; place-items: center; color: #5f7f94; }
+    .search-icon svg { width: 17px; height: 17px; }
+    .search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 14px; }
+    .search input::placeholder { color: #73899a; }
+    kbd { flex: 0 0 auto; padding: 5px 8px; border: 1px solid rgba(110,145,165,.24); border-radius: 8px; color: #6b8294; background: rgba(255,255,255,.33); font-size: 10px; }
+    .apps { padding: 0 0 130px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+    .section-head h2 { margin: 0; font-size: 21px; letter-spacing: -.045em; }
+    .count { display: block; margin-top: 2px; color: #60788a; font-size: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .card {
+      position: relative;
+      display: flex;
+      min-height: 124px;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 11px 12px 9px;
+      border-radius: 16px;
+      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+    }
+    .card::before {
+      position: absolute;
+      top: -74px;
+      right: -73px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.65), rgba(161,225,255,.13) 48%, transparent 72%);
+      content: "";
+      pointer-events: none;
+    }
+    .card::after { position: absolute; inset: 1px; border: 1px solid rgba(255,255,255,.32); border-radius: inherit; content: ""; pointer-events: none; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,.98); box-shadow: 0 26px 68px rgba(47, 112, 130, .18), inset 0 1px 0 #fff; }
+    .card-top { position: relative; display: flex; align-items: center; gap: 11px; }
+    .icon {
+      display: grid;
+      width: 49px;
+      height: 49px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: 13px;
+      color: #fff;
+      background: linear-gradient(145deg, #47c9e7, #188ebc 58%, #146c99);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 9px 20px rgba(34, 129, 161, .22);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      text-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+    .icon.phone { color: #087347; background: linear-gradient(145deg, #e5fff0, #9cebb5 55%, #58cb89); }
+    .icon.vpn { color: #fff; background: linear-gradient(145deg, #c7baff, #9079eb 55%, #6353bf); }
+    .icon.tt { background: linear-gradient(145deg, #77c9f3, #388fda 58%, #3168bb); }
+    .icon.st { background: linear-gradient(145deg, #ff9c8f, #e85256 58%, #c8333b); }
+    .icon.go { background: linear-gradient(145deg, #ffc477, #f28b36 58%, #d76524); }
+    .icon svg { width: 29px; height: 29px; }
+    .card-meta { min-width: 0; }
+    .card h3 { margin: 0; font-size: 12px; letter-spacing: -.02em; }
+    .app-name { display: block; margin-top: 1px; color: #486277; font-size: 10px; }
+    .card p { min-height: 24px; margin: 2px 0 0 60px; color: #536c7e; font-size: 9px; line-height: 1.35; }
+    .bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 5px; }
+    .version { padding: 3px 8px; border: 1px solid rgba(255,255,255,.8); border-radius: 999px; color: #30634d; background: rgba(192,245,207,.53); font-size: 8px; font-weight: 700; }
+    .download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border: 1px solid rgba(36, 158, 89, .45);
+      border-radius: 999px;
+      color: #14583d;
+      background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(219,255,229,.54));
+      box-shadow: inset 0 1px 0 #fff, 0 6px 16px rgba(44, 155, 91, .13);
+      font-size: 9px;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .download:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 #fff, 0 9px 22px rgba(44,155,91,.2); }
+    .download span { font-size: 13px; line-height: 10px; }
+    .empty { grid-column: 1 / -1; padding: 44px 20px; border-radius: 24px; color: var(--muted); text-align: center; }
+    .dock {
+      position: fixed;
+      z-index: 20;
+      bottom: 18px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px;
+      border-radius: 28px;
+      transform: translateX(-50%);
+    }
+    .dock a {
+      display: grid;
+      width: 62px;
+      min-height: 58px;
+      place-items: center;
+      align-content: center;
+      gap: 3px;
+      border-radius: 19px;
+      color: #587185;
+      transition: .2s ease;
+    }
+    .dock a:hover, .dock a.active { color: #126a41; background: linear-gradient(145deg, rgba(255,255,255,.77), rgba(177,240,190,.58)); box-shadow: inset 0 1px 0 #fff, 0 5px 15px rgba(65,145,93,.1); }
+    .dock-icon { font-size: 21px; line-height: 1; }
+    .dock small { font-size: 9px; font-weight: 650; }
+    footer { padding: 0 0 36px; color: #718696; font-size: 11px; text-align: center; }
+    :focus-visible { outline: 3px solid rgba(31,157,91,.6); outline-offset: 3px; }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 24px); }
+      .topbar { top: 7px; display: flex; flex-wrap: wrap; margin-top: 7px; padding: 9px 11px 8px; border-radius: 19px; }
+      .brand { margin-bottom: 0; font-size: 14px; }
+      .logo { width: 34px; height: 34px; border-radius: 12px; font-size: 20px; }
+      .categories { order: 2; width: 100%; justify-content: space-between; gap: 2px; }
+      .cat { padding: 8px 10px; font-size: 11px; }
+      .search { width: min(320px, 100%); height: 36px; flex: 0 1 320px; border-radius: 14px; padding: 0 10px; }
+      .search-icon { font-size: 20px; }
+      .search input { font-size: 12px; }
+      .hero { padding: 17px 0 9px; }
+      h1 { font-size: 26px; }
+      .intro { font-size: 10px; }
+      .apps { padding-bottom: 115px; }
+      .section-head { margin-bottom: 8px; }
+      .section-head h2 { font-size: 20px; }
+      .count { font-size: 11px; }
+      .grid { grid-template-columns: 1fr; gap: 10px; }
+      .card { min-height: 124px; padding: 11px 12px 9px; border-radius: 16px; }
+      .card-top { gap: 11px; }
+      .icon { width: 49px; height: 49px; border-radius: 13px; font-size: 16px; }
+      .card h3 { margin: 0; font-size: 12px; }
+      .card p { min-height: 24px; margin: 2px 0 0 60px; font-size: 9px; }
+      .bottom { padding-top: 5px; }
+      .dock { bottom: 9px; gap: 2px; padding: 6px; border-radius: 22px; }
+      .dock a { width: 55px; min-height: 49px; border-radius: 15px; }
+      footer { padding-bottom: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<header class="glass category-header">
-  <a class="brand" href="#" aria-label="Sonsiro Home"><span class="logo">S</span> SONSIRO</a>
-  <nav class="categories" aria-label="Danh mục ứng dụng">
-    <button class="cat active" data-cat="all">Tất cả</button>
-    <button class="cat" data-cat="tv">TV</button>
-    <button class="cat" data-cat="android">Android</button>
-    <button class="cat" data-cat="vpn">VPN</button>
-    <button class="cat" data-cat="tools">Tools</button>
+  <div class="wrap">
+    <header class="topbar glass">
+      <a class="brand" href="#top" aria-label="Sonsiro Home"><span class="logo">S</span><span>SONSIRO</span></a>
+      <nav class="categories" aria-label="Danh mục ứng dụng">
+        <button class="cat active" type="button" data-cat="all" aria-pressed="true">Tất cả</button>
+        <button class="cat" type="button" data-cat="tv" aria-pressed="false">TV</button>
+        <button class="cat" type="button" data-cat="android" aria-pressed="false">Android</button>
+        <button class="cat" type="button" data-cat="vpn" aria-pressed="false">VPN</button>
+        <button class="cat" type="button" data-cat="tools" aria-pressed="false">Tools</button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title" aria-label="SONSIRO APP STORE"><img class="hero-mark" src="assets/sonsiro-infinity-emblem.png" alt=""></h1>
+        <p class="intro">Ứng dụng của bạn, tải nhanh và đơn giản.</p>
+        <label class="search glass">
+          <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <input id="search" type="search" placeholder="Tìm ứng dụng..." autocomplete="off" aria-label="Tìm ứng dụng">
+          <kbd>⌘ K</kbd>
+        </label>
+      </section>
+      <section class="apps" id="apps" aria-labelledby="apps-title">
+        <div class="section-head"><div><h2 id="apps-title">Ứng dụng</h2><span class="count" id="count" aria-live="polite"></span></div></div>
+        <div class="grid" id="grid" data-gesture-surface role="group" aria-label="Danh sách ứng dụng"></div>
+      </section>
+    </main>
+    <footer>© 2026 Sonsiro · Liquid Glass App Store</footer>
+  </div>
+
+  <nav class="dock glass" aria-label="Điều hướng nhanh">
+    <a class="active" href="#top"><span class="dock-icon" aria-hidden="true">⌂</span><small>Home</small></a>
+    <a href="#apps"><span class="dock-icon" aria-hidden="true">▦</span><small>Apps</small></a>
+    <a href="https://github.com/Sonsiro/sonsiro.github.io/releases" target="_blank" rel="noreferrer"><span class="dock-icon" aria-hidden="true">⬇</span><small>Releases</small></a>
+    <a href="https://github.com/Sonsiro/" target="_blank" rel="noreferrer"><span class="dock-icon" aria-hidden="true">◈</span><small>GitHub</small></a>
   </nav>
-</header>
 
-<section class="hero">
-<div>
-<div class="pill"><i class="dot"></i> SONSIRO APP STORE</div>
-<p>Ứng dụng của bạn, tải nhanh và đơn giản.</p>
-<div class="search glass"><span>⌕</span><input id="search" placeholder="Tìm ứng dụng..." autocomplete="off"><kbd>⌘ K</kbd></div>
-</div>
-</section>
+  <script>
+    const apps = [
+      { name: "SIRO-TV", type: "Android TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="m12 8 6 4 6-4M8 14h20v14H8z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><text x="18" y="24" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="8" font-weight="800">TV</text></svg>', cls: "", desc: "Ứng dụng xem TV dành cho Android TV.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-ATV.apk" },
+      { name: "SIRO-TV", type: "Android Phone", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M10 12.5h16a2.5 2.5 0 0 1 2.5 2.5v10a2.5 2.5 0 0 1-2.5 2.5H10A2.5 2.5 0 0 1 7.5 25V15a2.5 2.5 0 0 1 2.5-2.5Z" stroke="currentColor" stroke-width="2.3"/><path d="m13 9-2-3m12 3 2-3M13 18h.01M23 18h.01" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M18 12v15" stroke="currentColor" stroke-width="2.3"/></svg>', cls: "phone", desc: "Ứng dụng SIRO-TV dành cho điện thoại Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-TV.apk" },
+      { name: "SIRO-VPN", type: "VPN", cat: "vpn", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 4.5 29 9v8.2c0 7.2-4.7 12.2-11 14.3C11.7 29.4 7 24.4 7 17.2V9l11-4.5Z" fill="rgba(255,255,255,.22)" stroke="currentColor" stroke-width="2.2"/><path d="m13.2 18.2 3.1 3.1 6.7-7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>', cls: "vpn", desc: "Ứng dụng VPN Sonsiro cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-VPN.apk" },
+      { name: "TizenTube", type: "Samsung Tizen TV", cat: "tv", icon: "TT", cls: "tt", desc: "Ứng dụng YouTube dành cho TV Samsung chạy Tizen.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/tizenyoutube.apk" },
+      { name: "SmartTube", type: "Android TV", cat: "tv", icon: "ST", cls: "st", desc: "SmartTube Stable — ứng dụng YouTube tối ưu cho Android TV.", version: "Stable", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/smarttube.apk" },
+      { name: "Get Out", type: "Android", cat: "tools", icon: "GO", cls: "go", desc: "Ứng dụng Get Out dành cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/getout.apk" },
+    ];
+    const grid = document.querySelector("#grid");
+    const search = document.querySelector("#search");
+    const count = document.querySelector("#count");
+    const cats = [...document.querySelectorAll(".cat")];
+    let activeCat = "all";
 
-<section class="apps" id="apps">
-<div class="head"><h2>Ứng dụng</h2><span id="count">3 ứng dụng</span></div>
-<div class="grid" id="grid"></div>
-</section>
-</div>
+    function render() {
+      const query = search.value.toLocaleLowerCase("vi").trim();
+      const filtered = apps.filter(app => {
+        const categoryMatch = activeCat === "all" || app.cat === activeCat;
+        const textMatch = `${app.name} ${app.type} ${app.desc}`.toLocaleLowerCase("vi").includes(query);
+        return categoryMatch && textMatch;
+      });
+      count.textContent = `${filtered.length} ứng dụng`;
+      grid.innerHTML = filtered.length ? filtered.map(app => `
+        <article class="card glass">
+          <div class="card-top">
+            <div class="icon ${app.cls}" aria-hidden="true">${app.icon}</div>
+            <div class="card-meta"><h3>${app.type}</h3><span class="app-name">${app.name}</span></div>
+          </div>
+          <p>${app.desc}</p>
+          <div class="bottom"><span class="version">${app.version}</span><a class="download" href="${app.url}">Tải xuống <span aria-hidden="true">↓</span></a></div>
+        </article>`).join("") : '<div class="empty glass">Không tìm thấy ứng dụng phù hợp.</div>';
+    }
 
-<div id="liquidDock" class="glass">
-<div class="liquid-light" id="light"></div>
-<a class="dock-item active" href="#" tabindex="0"><span>⌂</span><small>Home</small></a>
-<a class="dock-item" href="#apps" tabindex="0"><span>▦</span><small>Apps</small></a>
-<a class="dock-item" href="https://github.com/Sonsiro/sonsiro.github.io/releases" target="_blank" tabindex="0"><span>⬇</span><small>Releases</small></a>
-<a class="dock-item" href="https://github.com/Sonsiro/sonsiro" target="_blank" tabindex="0"><span>◈</span><small>GitHub</small></a>
-</div>
-
-<footer>© 2026 Sonsiro · Liquid Glass App Store</footer>
-
-<script>
-const apps=[
-{
- name:"SIRO-TV",
- type:"Android TV",
- cat:"tv",
- icon:"TV",
- cls:"tv",
- desc:"Ứng dụng xem TV dành cho Android TV.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-ATV.apk"
-},
-{
- name:"SIRO-TV",
- type:"Android Phone",
- cat:"android",
- icon:"TV",
- cls:"tv",
- desc:"Ứng dụng SIRO-TV dành cho điện thoại Android.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-TV.apk"
-},
-{
- name:"SIRO-VPN",
- type:"VPN",
- cat:"vpn",
- icon:"VPN",
- cls:"vpn",
- desc:"Ứng dụng VPN Sonsiro cho Android.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-VPN.apk"
-},
-{
- name:"TizenTube",
- type:"Samsung Tizen TV",
- cat:"tv",
- icon:"TT",
- cls:"tv",
- desc:"Ứng dụng YouTube dành cho TV Samsung chạy Tizen.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/tizenyoutube.apk"
-},
-{
- name:"SmartTube",
- type:"Android TV",
- cat:"tv",
- icon:"ST",
- cls:"tv",
- desc:"SmartTube Stable — ứng dụng YouTube tối ưu cho Android TV.",
- version:"Stable",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/smarttube.apk"
-},
-{
- name:"Get Out",
- type:"Android",
- cat:"tools",
- icon:"GO",
- cls:"",
- desc:"Ứng dụng Get Out dành cho Android.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/getout.apk"
-},
-{
- name:"1.1.1.1 Mod",
- type:"VPN",
- cat:"vpn",
- icon:"1.1",
- cls:"vpn",
- desc:"1.1.1.1 Mod — ứng dụng VPN cho Android.",
- version:"Latest",
- url:"https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/1.1.1.1.apk"
-}
-];
-
-const grid=document.querySelector("#grid");
-const search=document.querySelector("#search");
-const cats=[...document.querySelectorAll(".cat")];
-let activeCat="all";
-
-function render(){
- const q=search.value.toLowerCase().trim();
- const list=apps.filter(a=>{
-   const categoryOk=activeCat==="all" || a.cat===activeCat;
-   const textOk=(a.name+" "+a.type+" "+a.desc).toLowerCase().includes(q);
-   return categoryOk && textOk;
- });
- grid.innerHTML=list.map(a=>`
- <article class="card glass">
-   <div class="icon ${a.cls}">${a.icon}</div>
-   <span class="tag">${a.type}</span>
-   <h3>${a.name}</h3>
-   <p>${a.desc}</p>
-   <div class="bottom">
-     <span class="version">${a.version}</span>
-     <a class="download" href="${a.url}">Tải xuống ↓</a>
-   </div>
- </article>`).join("");
- document.querySelector("#count").textContent=list.length+" ứng dụng";
-}
-
-cats.forEach(btn=>{
- btn.addEventListener("click",()=>{
-   activeCat=btn.dataset.cat;
-   cats.forEach(x=>x.classList.toggle("active",x===btn));
-   document.querySelector("#apps").scrollIntoView({behavior:"smooth",block:"start"});
-   render();
- });
-});
-
-search.addEventListener("input",render);
-document.addEventListener("keydown",e=>{
- if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){
-   e.preventDefault();search.focus();
- }
-});
-render();
-
-const dock=document.querySelector("#liquidDock"),items=[...document.querySelectorAll(".dock-item")],light=document.querySelector("#light");
-dock.addEventListener("mousemove",e=>{
- const r=dock.getBoundingClientRect(),x=e.clientX-r.left;
- light.style.left=x+"px";light.style.top=(e.clientY-r.top)+"px";light.style.opacity=1;
- items.forEach(item=>{
-   const ir=item.getBoundingClientRect(),cx=ir.left+ir.width/2,d=Math.abs(e.clientX-cx);
-   const s=Math.max(1,1.48-d/115);
-   item.style.transform=`translateY(${-(s-1)*13}px) scale(${s})`;
- });
-});
-dock.addEventListener("mouseleave",()=>{
- light.style.opacity=0;
- items.forEach(i=>i.style.transform="");
-});
-</script>
+    cats.forEach(button => button.addEventListener("click", () => {
+      activeCat = button.dataset.cat;
+      cats.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle("active", selected);
+        item.setAttribute("aria-pressed", String(selected));
+      });
+      render();
+    }));
+    search.addEventListener("input", render);
+    document.addEventListener("app:back", event => {
+      if (search.value) {
+        search.value = "";
+        render();
+        event.preventDefault();
+      } else if (activeCat !== "all") {
+        cats.find(button => button.dataset.cat === "all")?.click();
+        event.preventDefault();
+      }
+    });
+    document.addEventListener("keydown", event => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        search.focus();
+      }
+    });
+    render();
+  </script>
+  <script src="input-navigation.js"></script>
 </body>
 </html>
-<style>
-.visual{display:none!important}
-.hero{grid-template-columns:1fr!important;min-height:auto!important}
-@media(max-width:560px){
-  .hero{padding-top:18px!important;padding-bottom:18px!important;gap:0!important}
-}
-</style>

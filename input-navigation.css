@@ -1,0 +1,27 @@
+/* Touch, mouse, and remote-control affordances for the app catalog. */
+[data-gesture-surface] {
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-gesture-surface].is-dragging {
+  cursor: grabbing;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 3px solid rgba(26, 148, 84, .8);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(26, 148, 84, .13);
+}
+
+.card:focus-within {
+  border-color: rgba(31, 157, 91, .62);
+  box-shadow: 0 12px 34px rgba(36, 120, 78, .17), inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button, input, [tabindex]):focus-visible { scroll-behavior: auto; }
+}
