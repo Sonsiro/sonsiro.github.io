@@ -129,7 +129,22 @@
     .search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 14px; }
     .search input::placeholder { color: #73899a; }
     kbd { flex: 0 0 auto; padding: 5px 8px; border: 1px solid rgba(110,145,165,.24); border-radius: 8px; color: #6b8294; background: rgba(255,255,255,.33); font-size: 10px; }
-    .apps { padding: 0 0 130px; }
+    .today {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      margin: 14px auto 0;
+      padding: 9px 16px 9px 10px;
+      border-radius: 18px;
+      text-align: left;
+    }
+    .today-icon { display: grid; flex: 0 0 auto; width: 38px; height: 38px; place-items: center; border-radius: 12px; color: #fff; background: linear-gradient(145deg, #5fd494, #169a5d 58%, #0b7040); box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 8px 18px rgba(22,154,93,.25); }
+    .today-icon svg { width: 20px; height: 20px; }
+    .today-time { display: block; color: #123c2a; font-size: 19px; font-weight: 850; letter-spacing: .05em; font-variant-numeric: tabular-nums; line-height: 1; }
+    .today-sep { width: 1px; align-self: stretch; background: rgba(110,145,165,.25); }
+    .today-solar { display: block; color: #2f4a3d; font-size: 11px; font-weight: 700; }
+    .today-lunar { display: block; margin-top: 2px; color: #5f7f94; font-size: 10px; font-weight: 550; }
+    .apps { padding: 0 0 26px; }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
     .section-head h2 { margin: 0; font-size: 21px; letter-spacing: -.045em; }
     .count { display: block; margin-top: 2px; color: #60788a; font-size: 10px; }
@@ -221,7 +236,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin: 6px 0 30px;
+      margin: 6px 0 14px;
       padding: 18px 20px;
       border-radius: 24px;
       color: #fff;
@@ -266,7 +281,7 @@
     .dock a:hover, .dock a.active { color: #126a41; background: linear-gradient(145deg, rgba(255,255,255,.77), rgba(177,240,190,.58)); box-shadow: inset 0 1px 0 #fff, 0 5px 15px rgba(65,145,93,.1); }
     .dock-icon { font-size: 21px; line-height: 1; }
     .dock small { font-size: 9px; font-weight: 650; }
-    footer { padding: 0 0 36px; color: #718696; font-size: 11px; text-align: center; }
+    footer { padding: 6px 0 118px; color: #718696; font-size: 11px; text-align: center; }
     :focus-visible { outline: 3px solid rgba(31,157,91,.6); outline-offset: 3px; }
     @media (max-width: 720px) {
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -285,7 +300,7 @@
       .hero { padding: 17px 0 9px; }
       h1 { font-size: 26px; }
       .intro { font-size: 10px; }
-      .apps { padding-bottom: 115px; }
+      .apps { padding-bottom: 18px; }
       .section-head { margin-bottom: 8px; }
       .section-head h2 { font-size: 20px; }
       .count { font-size: 11px; }
@@ -305,7 +320,12 @@
       .tv-text { flex-basis: calc(100% - 58px); }
       .tv-text strong { font-size: 15px; }
       .tv-cta { justify-content: center; width: 100%; }
-      footer { padding-bottom: 28px; }
+      .today { gap: 10px; padding: 8px 13px 8px 9px; border-radius: 15px; }
+      .today-icon { width: 34px; height: 34px; border-radius: 10px; }
+      .today-time { font-size: 16px; }
+      .today-solar { font-size: 10px; }
+      .today-lunar { font-size: 9px; }
+      footer { padding-bottom: 108px; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
   </style>
@@ -327,6 +347,12 @@
       <section class="hero" aria-labelledby="page-title">
         <h1 id="page-title" aria-label="SONSIRO APP STORE"><img class="hero-mark" src="assets/appstore-logo.png" alt="Sonsiro App Store"></h1>
         <p class="intro">Ứng dụng của bạn, tải nhanh và đơn giản.</p>
+        <div class="today glass" role="status" aria-label="Đồng hồ và lịch hôm nay">
+          <span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8.2" stroke="currentColor" stroke-width="2"/><path d="M12 8.8V13l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 2.8h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span><strong class="today-time" id="clock">--:--:--</strong></span>
+          <span class="today-sep" aria-hidden="true"></span>
+          <span><span class="today-solar" id="solar"></span><span class="today-lunar" id="lunar"></span></span>
+        </div>
         <label class="search glass">
           <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
           <input id="search" type="search" placeholder="Tìm ứng dụng..." autocomplete="off" aria-label="Tìm ứng dụng">
@@ -429,6 +455,113 @@
       }
     });
     render();
+
+    // Đồng hồ + lịch âm (thuật toán Hồ Ngọc Đức, múi giờ GMT+7)
+    const clockEl = document.querySelector("#clock");
+    const solarEl = document.querySelector("#solar");
+    const lunarEl = document.querySelector("#lunar");
+    const WEEKDAYS = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+    const CAN = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"];
+    const CHI = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+    const pad2 = n => String(n).padStart(2, "0");
+    function jdFromDate(dd, mm, yy) {
+      const a = Math.floor((14 - mm) / 12);
+      const y = yy + 4800 - a;
+      const m = mm + 12 * a - 3;
+      let jd = dd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+      if (jd < 2299161) jd = dd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - 32083;
+      return jd;
+    }
+    function getNewMoonDay(k, tz) {
+      const T = k / 1236.85;
+      const T2 = T * T, T3 = T2 * T;
+      const dr = Math.PI / 180;
+      let jd1 = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3;
+      jd1 += 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+      const M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+      const Mpr = 306.0253 + 385.81693528 * k + 0.0107306 * T2 + 0.00001236 * T3;
+      const F = 21.2964 + 390.67050645 * k - 0.0016528 * T2 - 0.00000239 * T3;
+      let C1 = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * dr * M);
+      C1 = C1 - 0.4068 * Math.sin(Mpr * dr) + 0.0161 * Math.sin(dr * 2 * Mpr);
+      C1 = C1 - 0.0004 * Math.sin(dr * 3 * Mpr) + 0.0104 * Math.sin(dr * 2 * F) - 0.0051 * Math.sin(dr * (M + Mpr));
+      C1 = C1 - 0.0074 * Math.sin(dr * (M - Mpr)) + 0.0004 * Math.sin(dr * (2 * F + M));
+      C1 = C1 - 0.0004 * Math.sin(dr * (2 * F - M)) - 0.0006 * Math.sin(dr * (2 * F + Mpr));
+      C1 = C1 + 0.0010 * Math.sin(dr * (2 * F - Mpr)) + 0.0005 * Math.sin(dr * (2 * Mpr + M));
+      const deltat = T < -11 ? 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3 : -0.000278 + 0.000265 * T + 0.000262 * T2;
+      return Math.floor(jd1 + C1 - deltat + 0.5 + tz / 24);
+    }
+    function getSunLongitude(jdn, tz) {
+      const T = (jdn - 2451545.5 - tz / 24) / 36525;
+      const T2 = T * T;
+      const dr = Math.PI / 180;
+      const M = 357.52910 + 35999.05030 * T - 0.0001559 * T2 - 0.00000048 * T * T2;
+      const L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2;
+      let DL = (1.914600 - 0.004817 * T - 0.000014 * T2) * Math.sin(dr * M);
+      DL += (0.019993 - 0.000101 * T) * Math.sin(dr * 2 * M) + 0.000290 * Math.sin(dr * 3 * M);
+      let L = (L0 + DL) * dr;
+      L = L - Math.PI * 2 * Math.floor(L / (Math.PI * 2));
+      return Math.floor(L / Math.PI * 6);
+    }
+    function getLunarMonth11(yy, tz) {
+      const off = jdFromDate(31, 12, yy) - 2415021;
+      const k = Math.floor(off / 29.530588853);
+      let nm = getNewMoonDay(k, tz);
+      if (getSunLongitude(nm, tz) >= 9) nm = getNewMoonDay(k - 1, tz);
+      return nm;
+    }
+    function getLeapMonthOffset(a11, tz) {
+      const k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+      let last = 0;
+      let i = 1;
+      let arc = getSunLongitude(getNewMoonDay(k + i, tz), tz);
+      do {
+        last = arc;
+        i++;
+        arc = getSunLongitude(getNewMoonDay(k + i, tz), tz);
+      } while (arc !== last && i < 14);
+      return i - 1;
+    }
+    function solarToLunar(dd, mm, yy, tz) {
+      const dayNumber = jdFromDate(dd, mm, yy);
+      const k = Math.floor((dayNumber - 2415021.076998695) / 29.530588853);
+      let monthStart = getNewMoonDay(k + 1, tz);
+      if (monthStart > dayNumber) monthStart = getNewMoonDay(k, tz);
+      let a11 = getLunarMonth11(yy, tz);
+      let b11 = a11;
+      let lunarYear;
+      if (a11 >= monthStart) {
+        lunarYear = yy;
+        a11 = getLunarMonth11(yy - 1, tz);
+      } else {
+        lunarYear = yy + 1;
+        b11 = getLunarMonth11(yy + 1, tz);
+      }
+      const lunarDay = dayNumber - monthStart + 1;
+      const diff = Math.floor((monthStart - a11) / 29);
+      let lunarLeap = 0;
+      let lunarMonth = diff + 11;
+      if (b11 - a11 > 365) {
+        const leapMonthDiff = getLeapMonthOffset(a11, tz);
+        if (diff >= leapMonthDiff) {
+          lunarMonth = diff + 10;
+          if (diff === leapMonthDiff) lunarLeap = 1;
+        }
+      }
+      if (lunarMonth > 12) lunarMonth -= 12;
+      if (lunarMonth >= 11 && diff < 4) lunarYear -= 1;
+      return [lunarDay, lunarMonth, lunarYear, lunarLeap];
+    }
+    function tick() {
+      const now = new Date();
+      clockEl.textContent = `${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
+      const d = now.getDate(), m = now.getMonth() + 1, y = now.getFullYear();
+      solarEl.textContent = `${WEEKDAYS[now.getDay()]}, ${pad2(d)}/${pad2(m)}/${y}`;
+      const [ld, lm, ly, leap] = solarToLunar(d, m, y, 7);
+      const dayName = ld === 1 ? "Mùng 1" : ld === 15 ? "Rằm" : ld;
+      lunarEl.textContent = `Âm lịch: ${dayName} tháng ${lm}${leap ? " nhuận" : ""} năm ${CAN[(ly + 6) % 10]} ${CHI[(ly + 8) % 12]}`;
+    }
+    tick();
+    setInterval(tick, 1000);
   </script>
   <script src="input-navigation.js"></script>
 </body>

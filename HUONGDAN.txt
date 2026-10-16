@@ -4,6 +4,10 @@ HƯỚNG DẪN CẬP NHẬT — 19 APPS + BANNER XEM TI VI ONLINE
 File sửa: index.html (chỉ 1 file duy nhất).
 
 MỚI LẦN NÀY:
+- Widget đồng hồ + lịch trong hero (dưới dòng giới thiệu, trên ô tìm
+  kiếm): đồng hồ chạy giây thật HH:MM:SS, ngày dương "Thứ..., dd/mm/yyyy",
+  lịch âm Việt Nam (thuật toán Hồ Ngọc Đức, GMT+7, tự nhận tháng nhuận,
+  hiện "Mùng 1"/"Rằm" và năm Can Chi).
 - Logo hero mới kiểu App Store hiện đại: squircle gradient xanh lá +
   chữ "A" trắng (file assets/appstore-logo.png, nền trong suốt).
   Thay cho logo vòng infinity cũ. File sonsiro-infinity-emblem.png
@@ -15,6 +19,9 @@ MỚI LẦN NÀY:
   có chấm nhấp nháy, nút "Xem ngay ↗" mở tab mới tới
   https://hoangcongson.github.io/tv/
   Trên điện thoại banner tự xuống dòng, nút "Xem ngay" full-width.
+- Fix bố cục: thanh dock nổi (Home/Apps/Releases/GitHub) trước đây
+  đè lên banner — đã thêm đệm dưới footer và gọn khoảng trống
+  sau lưới app, banner + footer hiện đứng yên phía trên dock.
 
 5 APP MỚI THÊM LẦN NÀY:
   Cốc Cốc TV         | Trình duyệt TV  | tv       | coccoc.apk
