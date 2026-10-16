@@ -4,6 +4,9 @@ HƯỚNG DẪN CẬP NHẬT — 19 APPS + BANNER XEM TI VI ONLINE
 File sửa: index.html (chỉ 1 file duy nhất).
 
 MỚI LẦN NÀY:
+- Title tab: "Sơn Sirô - Apps" + favicon logo A (assets/appstore-logo.png).
+- Dock: "Releases" -> "TV Online" (link hoangcongson.github.io/tv/),
+  "GitHub" -> "Tìm kiếm" (bấm là focus ô tìm kiếm).
 - Widget đồng hồ + lịch trong hero (dưới dòng giới thiệu, trên ô tìm
   kiếm): đồng hồ chạy giây thật HH:MM:SS, ngày dương "Thứ..., dd/mm/yyyy",
   lịch âm Việt Nam (thuật toán Hồ Ngọc Đức, GMT+7, tự nhận tháng nhuận,

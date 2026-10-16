@@ -269,18 +269,22 @@
       border-radius: 28px;
       transform: translateX(-50%);
     }
-    .dock a {
+    .dock a, .dock button {
       display: grid;
       width: 62px;
       min-height: 58px;
       place-items: center;
       align-content: center;
       gap: 3px;
+      border: 0;
       border-radius: 19px;
       color: #587185;
+      background: none;
+      font: inherit;
+      cursor: pointer;
       transition: .2s ease;
     }
-    .dock a:hover, .dock a.active { color: #126a41; background: linear-gradient(145deg, rgba(255,255,255,.77), rgba(177,240,190,.58)); box-shadow: inset 0 1px 0 #fff, 0 5px 15px rgba(65,145,93,.1); }
+    .dock a:hover, .dock a.active, .dock button:hover { color: #126a41; background: linear-gradient(145deg, rgba(255,255,255,.77), rgba(177,240,190,.58)); box-shadow: inset 0 1px 0 #fff, 0 5px 15px rgba(65,145,93,.1); }
     .dock-icon { font-size: 21px; line-height: 1; }
     .dock small { font-size: 9px; font-weight: 650; }
     footer { padding: 6px 0 118px; color: #718696; font-size: 11px; text-align: center; }
@@ -315,7 +319,7 @@
       .card p { min-height: 24px; margin: 2px 0 0 60px; font-size: 9px; }
       .bottom { padding-top: 5px; }
       .dock { bottom: 9px; gap: 2px; padding: 6px; border-radius: 22px; }
-      .dock a { width: 55px; min-height: 49px; border-radius: 15px; }
+      .dock a, .dock button { width: 55px; min-height: 49px; border-radius: 15px; }
       .tv-banner { flex-wrap: wrap; gap: 12px; margin-bottom: 22px; padding: 14px; border-radius: 18px; }
       .tv-icon { width: 46px; height: 46px; border-radius: 13px; }
       .tv-icon svg { width: 26px; height: 26px; }
@@ -379,8 +383,8 @@
   <nav class="dock glass" aria-label="Điều hướng nhanh">
     <a class="active" href="#top"><span class="dock-icon" aria-hidden="true">⌂</span><small>Home</small></a>
     <a href="#apps"><span class="dock-icon" aria-hidden="true">▦</span><small>Apps</small></a>
-    <a href="https://github.com/Sonsiro/sonsiro.github.io/releases" target="_blank" rel="noreferrer"><span class="dock-icon" aria-hidden="true">⬇</span><small>Releases</small></a>
-    <a href="https://github.com/Sonsiro/" target="_blank" rel="noreferrer"><span class="dock-icon" aria-hidden="true">◈</span><small>GitHub</small></a>
+    <a href="https://hoangcongson.github.io/tv/" target="_blank" rel="noreferrer"><span class="dock-icon" aria-hidden="true">▶</span><small>TV Online</small></a>
+    <button type="button" onclick="document.getElementById('search').focus()"><span class="dock-icon" aria-hidden="true">⌕</span><small>Tìm kiếm</small></button>
   </nav>
 
   <script>
