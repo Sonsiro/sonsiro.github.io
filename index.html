@@ -68,7 +68,7 @@
       padding: 10px 14px 10px 17px;
       border-radius: 23px;
     }
-    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.035em; }
+    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 11px; }
     .logo {
       display: grid;
       width: 43px;
@@ -76,13 +76,15 @@
       place-items: center;
       border: 1px solid rgba(255,255,255,.9);
       border-radius: 15px;
-      color: #08643c;
+      color: #fff;
       font-size: 24px;
       font-weight: 950;
-      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(126,232,161,.77));
-      box-shadow: inset 0 1px 2px #fff, 0 7px 22px rgba(28, 150, 87, .2);
-      text-shadow: 0 1px 0 rgba(255,255,255,.85);
+      background: linear-gradient(145deg, #5fd494, #169a5d 55%, #0b7040);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,.55), 0 7px 22px rgba(28, 150, 87, .32);
+      text-shadow: 0 1px 2px rgba(0, 60, 35, .35);
     }
+    .brand-name { font-size: 17px; font-weight: 850; letter-spacing: -.02em; color: #14324a; }
+    .brand-name em { font-style: normal; background: linear-gradient(120deg, #149a5f, #0a6d43); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .categories { display: flex; flex: 0 0 auto; align-items: center; gap: 4px; margin: 0 auto; overflow-x: auto; padding: 3px; border: 1px solid rgba(255,255,255,.64); border-radius: 999px; background: rgba(255,255,255,.22); scrollbar-width: none; }
     .categories::-webkit-scrollbar { display: none; }
     .cat {
@@ -108,7 +110,7 @@
     .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #168353; font-size: 11px; font-weight: 850; letter-spacing: .18em; }
     .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #53c779; box-shadow: 0 0 15px rgba(67,199,111,.72); }
     h1 { margin: 0 0 4px; font-size: clamp(28px, 3vw, 36px); line-height: 1; letter-spacing: -.065em; font-weight: 850; }
-    .hero-mark { display: block; width: clamp(160px, 18vw, 230px); height: auto; margin: -10px auto 0; filter: drop-shadow(0 10px 18px rgba(39, 126, 132, .2)); }
+    .hero-mark { display: block; width: clamp(96px, 11vw, 132px); height: auto; margin: 4px auto 6px; filter: drop-shadow(0 14px 24px rgba(20, 120, 85, .28)); }
     .intro { margin: 0 auto; color: #50687d; font-size: 12px; }
     .search {
       display: flex;
@@ -177,7 +179,21 @@
     .icon.tt { background: linear-gradient(145deg, #77c9f3, #388fda 58%, #3168bb); }
     .icon.st { background: linear-gradient(145deg, #ff9c8f, #e85256 58%, #c8333b); }
     .icon.go { background: linear-gradient(145deg, #ffc477, #f28b36 58%, #d76524); }
+    .icon.sb { background: linear-gradient(145deg, #8ee3f0, #2bb3c7 58%, #12879b); }
+    .icon.cf { background: linear-gradient(145deg, #ffe9a8, #f6c344 58%, #dd9a12); }
+    .icon.cb { background: linear-gradient(145deg, #9fb8ff, #4a6fd6 58%, #2c48a3); }
+    .icon.fr { background: linear-gradient(145deg, #ff8fa0, #e02d55 58%, #a81240); }
+    .icon.kk { background: linear-gradient(145deg, #ffc3e0, #ef7fbb 58%, #c94f92); }
+    .icon.ms { background: linear-gradient(145deg, #b7c6d1, #7b93a5 58%, #566c7e); }
+    .icon.so { background: linear-gradient(145deg, #d5a8ff, #a86ae0 58%, #7d3fb0); }
+    .icon.va { background: linear-gradient(145deg, #a8e6c9, #4cb98a 58%, #2a8a62); }
     .icon svg { width: 29px; height: 29px; }
+    .card.featured { grid-column: 1 / -1; min-height: 0; }
+    .card.featured .icon { width: 56px; height: 56px; border-radius: 16px; }
+    .card.featured .icon svg { width: 33px; height: 33px; }
+    .card.featured .app-name { font-size: 16px; }
+    .card.featured p { font-size: 10px; }
+    .tag-new { display: inline-block; margin-left: 7px; padding: 2px 7px; border-radius: 999px; color: #c23844; background: linear-gradient(140deg, #fff0f1, #ffdbe0); font-size: 8px; font-weight: 850; letter-spacing: .06em; vertical-align: 2px; }
     .card-meta { min-width: 0; }
     .card h3 { margin: 0; color: #718797; font-size: 10px; font-weight: 550; letter-spacing: -.01em; }
     .app-name { display: block; margin-top: 1px; color: #172a3b; font-size: 14px; font-weight: 800; line-height: 1.2; }
@@ -201,6 +217,29 @@
     .download:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 #fff, 0 9px 22px rgba(44,155,91,.2); }
     .download span { font-size: 13px; line-height: 10px; }
     .empty { grid-column: 1 / -1; padding: 44px 20px; border-radius: 24px; color: var(--muted); text-align: center; }
+    .tv-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 6px 0 30px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(120deg, rgba(24,62,118,.93), rgba(16,106,138,.9) 55%, rgba(12,132,104,.9));
+      box-shadow: 0 18px 40px rgba(15,75,115,.28), inset 0 1px 0 rgba(255,255,255,.28);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .tv-banner:hover { transform: translateY(-2px); box-shadow: 0 24px 48px rgba(15,75,115,.34), inset 0 1px 0 rgba(255,255,255,.32); }
+    .tv-icon { display: grid; flex: 0 0 auto; width: 56px; height: 56px; place-items: center; border-radius: 16px; color: #fff; background: rgba(255,255,255,.15); box-shadow: inset 0 1px 0 rgba(255,255,255,.22); }
+    .tv-icon svg { width: 32px; height: 32px; }
+    .tv-text { flex: 1; min-width: 0; }
+    .tv-text strong { display: block; font-size: 17px; font-weight: 850; letter-spacing: .01em; }
+    .tv-text small { display: block; margin-top: 3px; color: rgba(255,255,255,.82); font-size: 11px; }
+    .tv-live { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: rgba(237,56,74,.92); font-size: 8px; font-weight: 850; letter-spacing: .08em; vertical-align: 3px; }
+    .tv-live::before { width: 5px; height: 5px; border-radius: 50%; background: #fff; content: ""; animation: tv-pulse 1.6s ease infinite; }
+    @keyframes tv-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    .tv-cta { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 7px; padding: 9px 16px; border-radius: 999px; color: #0b4d68; background: rgba(255,255,255,.95); box-shadow: 0 6px 16px rgba(0,0,0,.16); font-size: 11px; font-weight: 800; }
     .dock {
       position: fixed;
       z-index: 20;
@@ -235,7 +274,8 @@
     @media (max-width: 600px) {
       .wrap { width: calc(100% - 24px); }
       .topbar { top: 7px; display: flex; flex-wrap: wrap; margin-top: 7px; padding: 9px 11px 8px; border-radius: 19px; }
-      .brand { margin-bottom: 0; font-size: 14px; }
+      .brand { margin-bottom: 0; }
+      .brand-name { font-size: 15px; }
       .logo { width: 34px; height: 34px; border-radius: 12px; font-size: 20px; }
       .categories { order: 2; width: 100%; justify-content: space-between; gap: 2px; }
       .cat { padding: 8px 10px; font-size: 11px; }
@@ -259,15 +299,21 @@
       .bottom { padding-top: 5px; }
       .dock { bottom: 9px; gap: 2px; padding: 6px; border-radius: 22px; }
       .dock a { width: 55px; min-height: 49px; border-radius: 15px; }
+      .tv-banner { flex-wrap: wrap; gap: 12px; margin-bottom: 22px; padding: 14px; border-radius: 18px; }
+      .tv-icon { width: 46px; height: 46px; border-radius: 13px; }
+      .tv-icon svg { width: 26px; height: 26px; }
+      .tv-text { flex-basis: calc(100% - 58px); }
+      .tv-text strong { font-size: 15px; }
+      .tv-cta { justify-content: center; width: 100%; }
       footer { padding-bottom: 28px; }
     }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar glass">
-      <a class="brand" href="#top" aria-label="Sonsiro Home"><span class="logo">S</span><span>SONSIRO</span></a>
+      <a class="brand" href="#top" aria-label="Sơn Sirô Home"><span class="logo">S</span><span class="brand-name">Sơn <em>Sirô</em></span></a>
       <nav class="categories" aria-label="Danh mục ứng dụng">
         <button class="cat active" type="button" data-cat="all" aria-pressed="true">Tất cả</button>
         <button class="cat" type="button" data-cat="tv" aria-pressed="false">TV</button>
@@ -279,7 +325,7 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="page-title">
-        <h1 id="page-title" aria-label="SONSIRO APP STORE"><img class="hero-mark" src="assets/sonsiro-infinity-emblem.png" alt=""></h1>
+        <h1 id="page-title" aria-label="SONSIRO APP STORE"><img class="hero-mark" src="assets/appstore-logo.png" alt="Sonsiro App Store"></h1>
         <p class="intro">Ứng dụng của bạn, tải nhanh và đơn giản.</p>
         <label class="search glass">
           <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
@@ -292,6 +338,13 @@
         <div class="grid" id="grid" data-gesture-surface role="group" aria-label="Danh sách ứng dụng"></div>
       </section>
     </main>
+    <section class="tv-online" aria-label="Xem Ti Vi Online">
+      <a class="tv-banner" href="https://hoangcongson.github.io/tv/" target="_blank" rel="noreferrer">
+        <span class="tv-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><rect x="4.5" y="7" width="27" height="17" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 12.5 6.5 4-6.5 4Z" fill="currentColor"/><path d="M12 29h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+        <span class="tv-text"><strong>Xem Ti Vi Online<span class="tv-live">TRỰC TUYẾN</span></strong><small>Xem truyền hình trực tuyến miễn phí ngay trên trình duyệt — không cần cài đặt.</small></span>
+        <span class="tv-cta">Xem ngay <span aria-hidden="true">↗</span></span>
+      </a>
+    </section>
     <footer>© 2026 Sonsiro · Liquid Glass App Store</footer>
   </div>
 
@@ -304,12 +357,25 @@
 
   <script>
     const apps = [
+      { name: "Stube", type: "Android Phone", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="10" y="4.5" width="16" height="27" rx="3.5" stroke="currentColor" stroke-width="2.2"/><path d="m16 14 6.5 4-6.5 4Z" fill="currentColor"/><path d="M14.5 27.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>', cls: "sb", feat: true, desc: "Ứng dụng YouTube dành cho điện thoại Android (fork SmartTube).", version: "v1.2", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/Stube_1.2_universal.apk" },
       { name: "SIRO-TV", type: "Android TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="m12 8 6 4 6-4M8 14h20v14H8z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><text x="18" y="24" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="8" font-weight="800">TV</text></svg>', cls: "", desc: "Ứng dụng xem TV dành cho Android TV.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-ATV.apk" },
+      { name: "TizenTube", type: "Samsung Tizen TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="5" y="8" width="26" height="15.5" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="m16 12 5.5 3.7-5.5 3.8Z" fill="currentColor"/><path d="M13 27.5h10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "tt", desc: "Ứng dụng YouTube dành cho TV Samsung chạy Tizen.", version: "v1.0.8", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/TizenYoutube.1.0.8.ok.apk" },
+      { name: "TizenTube Cobalt", type: "Samsung Tizen TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="5" y="8" width="26" height="15.5" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="m16 12 5.5 3.7-5.5 3.8Z" fill="currentColor"/><path d="M13 27.5h10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "cb", desc: "TizenTube bản Cobalt — YouTube cho TV Samsung chạy Tizen.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/cobalt-arm64.apk" },
+      { name: "SmartTube", type: "Android TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="5" y="9" width="26" height="18" rx="5" fill="rgba(255,255,255,.22)" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 14 6.5 4-6.5 4Z" fill="currentColor"/></svg>', cls: "st", desc: "SmartTube Stable — ứng dụng YouTube tối ưu cho Android TV.", version: "Stable", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/smarttube.apk" },
+      { name: "Cốc Cốc TV", type: "Trình duyệt TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="12" stroke="currentColor" stroke-width="2.2"/><path d="M22.5 13.2a6.8 6.8 0 1 0 0 9.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "va", desc: "Trình duyệt web Cốc Cốc dành cho Android TV.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/coccoc.apk" },
+      { name: "Projectivy Launcher", type: "Launcher", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="6.5" y="6.5" width="10" height="10" rx="2.5" stroke="currentColor" stroke-width="2.2"/><rect x="19.5" y="6.5" width="10" height="10" rx="2.5" stroke="currentColor" stroke-width="2.2"/><rect x="6.5" y="19.5" width="10" height="10" rx="2.5" stroke="currentColor" stroke-width="2.2"/><path d="m21.8 20.8 6 3.7-6 3.7Z" fill="currentColor"/></svg>', cls: "cb", desc: "Launcher giao diện tùy biến cho Android TV.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/project.apk" },
+      { name: "VTV Prime", type: "Xem TV", cat: "tv", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="17" r="2" fill="currentColor"/><path d="M18 19.5V27M10 27h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11.8 11.8a8.8 8.8 0 0 1 12.4 0M8.5 8.5a13.4 13.4 0 0 1 19 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "fr", desc: "Ứng dụng xem truyền hình VTV Prime.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/vtvprime.apk" },
       { name: "SIRO-TV", type: "Android Phone", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M10 12.5h16a2.5 2.5 0 0 1 2.5 2.5v10a2.5 2.5 0 0 1-2.5 2.5H10A2.5 2.5 0 0 1 7.5 25V15a2.5 2.5 0 0 1 2.5-2.5Z" stroke="currentColor" stroke-width="2.3"/><path d="m13 9-2-3m12 3 2-3M13 18h.01M23 18h.01" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M18 12v15" stroke="currentColor" stroke-width="2.3"/></svg>', cls: "phone", desc: "Ứng dụng SIRO-TV dành cho điện thoại Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-TV.apk" },
+      { name: "VApp", type: "Xem TV", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="m13 6 5 4 5-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="11" width="24" height="15" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="M12 30h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "va", desc: "Ứng dụng xem TV trên điện thoại Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/vapp.apk" },
+      { name: "Giọng nói Kiki", type: "Android", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M7 14.5v7h5l6 5.5V9l-6 5.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M22 13.5a6.5 6.5 0 0 1 0 9M25.5 10.5a11 11 0 0 1 0 15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "kk", desc: "Ứng dụng giọng nói Kiki dành cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/kiki.apk" },
+      { name: "Imou Camera", type: "Camera", cat: "android", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="15" r="8.5" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="15" r="4" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="15" r="1.3" fill="currentColor"/><path d="M13 30h10l-1.5-5.6h-7Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>', cls: "go", desc: "Ứng dụng xem camera Imou trên điện thoại.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/imou.apk" },
       { name: "SIRO-VPN", type: "VPN", cat: "vpn", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 4.5 29 9v8.2c0 7.2-4.7 12.2-11 14.3C11.7 29.4 7 24.4 7 17.2V9l11-4.5Z" fill="rgba(255,255,255,.22)" stroke="currentColor" stroke-width="2.2"/><path d="m13.2 18.2 3.1 3.1 6.7-7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>', cls: "vpn", desc: "Ứng dụng VPN Sonsiro cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SIRO-VPN.apk" },
-      { name: "TizenTube", type: "Samsung Tizen TV", cat: "tv", icon: "TT", cls: "tt", desc: "Ứng dụng YouTube dành cho TV Samsung chạy Tizen.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/tizenyoutube.apk" },
-      { name: "SmartTube", type: "Android TV", cat: "tv", icon: "ST", cls: "st", desc: "SmartTube Stable — ứng dụng YouTube tối ưu cho Android TV.", version: "Stable", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/smarttube.apk" },
-      { name: "Get Out", type: "Android", cat: "tools", icon: "GO", cls: "go", desc: "Ứng dụng Get Out dành cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/getout.apk" },
+      { name: "1.1.1.1", type: "VPN", cat: "vpn", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M12 27h12.5a6.5 6.5 0 0 0 1-12.9A9 9 0 0 0 9 15.7 6 6 0 0 0 12 27Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>', cls: "cf", desc: "Ứng dụng DNS/WARP của Cloudflare, vào mạng nhanh và riêng tư hơn.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/1.1.1.1.apk" },
+      { name: "Get Out", type: "Android", cat: "tools", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M20 6h-8.5A2.5 2.5 0 0 0 9 8.5v19a2.5 2.5 0 0 0 2.5 2.5H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="m24 12.5 5 5.5-5 5.5M29 18H15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>', cls: "go", desc: "Ứng dụng Get Out dành cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/getout.apk" },
+      { name: "Ferrari Downloader", type: "Downloader", cat: "tools", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 6v13m0 0-4.5-4.5M18 19l4.5-4.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 24h18M12 28.5h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "fr", desc: "Trình tải xuống tốc độ cao Ferrari.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/ferrari.apk" },
+      { name: "Dọn dẹp RAM", type: "Tools", cat: "tools", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="9" y="12" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="2.2"/><path d="M12.5 12V8.5m5.5 3.5V8.5m5.5 3.5V8.5M12.5 25v3.5m5.5-3.5v3.5m5.5-3.5v3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="m18 14.8.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9Z" fill="currentColor"/></svg>', cls: "cf", desc: "Ứng dụng dọn dẹp RAM, giải phóng bộ nhớ.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/d.n.d.p.ram.apk" },
+      { name: "MStore", type: "Store", cat: "tools", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M9.5 12h17l-1.4 15.2a3 3 0 0 1-3 2.8h-8.2a3 3 0 0 1-3-2.8Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 15V9.5a4.5 4.5 0 0 1 9 0V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "ms", desc: "Cửa hàng ứng dụng MStore cho Android.", version: "Latest", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/mstore.apk" },
+      { name: "Super Voice", type: "Voice", cat: "tools", icon: '<svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="13" y="4.5" width="10" height="16" rx="5" stroke="currentColor" stroke-width="2.2"/><path d="M10 17.5a8 8 0 0 0 16 0M18 25.5V30M13.5 30h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>', cls: "so", desc: "Ứng dụng giọng nói Super Voice.", version: "v1.5", url: "https://github.com/Sonsiro/sonsiro.github.io/releases/download/apps/SuperOK.1.5.apk" },
     ];
     const grid = document.querySelector("#grid");
     const search = document.querySelector("#search");
@@ -326,10 +392,10 @@
       });
       count.textContent = `${filtered.length} ứng dụng`;
       grid.innerHTML = filtered.length ? filtered.map(app => `
-        <article class="card glass">
+        <article class="card glass${app.feat ? ' featured' : ''}">
           <div class="card-top">
             <div class="icon ${app.cls}" aria-hidden="true">${app.icon}</div>
-            <div class="card-meta"><h3>${app.type}</h3><span class="app-name">${app.name}</span></div>
+            <div class="card-meta"><h3>${app.type}</h3><span class="app-name">${app.name}</span>${app.feat ? '<span class="tag-new">MỚI</span>' : ''}</div>
           </div>
           <p>${app.desc}</p>
           <div class="bottom"><span class="version">${app.version}</span><a class="download" href="${app.url}">Tải xuống <span aria-hidden="true">↓</span></a></div>

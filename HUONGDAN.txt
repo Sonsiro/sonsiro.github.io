@@ -1,0 +1,67 @@
+HƯỚNG DẪN CẬP NHẬT — 19 APPS + BANNER XEM TI VI ONLINE
+======================================================
+
+File sửa: index.html (chỉ 1 file duy nhất).
+
+MỚI LẦN NÀY:
+- Logo hero mới kiểu App Store hiện đại: squircle gradient xanh lá +
+  chữ "A" trắng (file assets/appstore-logo.png, nền trong suốt).
+  Thay cho logo vòng infinity cũ. File sonsiro-infinity-emblem.png
+  không còn dùng — có thể xóa hoặc giữ.
+- LƯU Ý: lần này có thêm FILE MỚI assets/appstore-logo.png — phải
+  upload cả file này lên repo (vào thư mục assets/), không chỉ index.html.
+- Banner "Xem Ti Vi Online" ở CUỐI TRANG (sau lưới app, trước footer):
+  nền gradient xanh dương, icon TV + nút play, badge đỏ "TRỰC TUYẾN"
+  có chấm nhấp nháy, nút "Xem ngay ↗" mở tab mới tới
+  https://hoangcongson.github.io/tv/
+  Trên điện thoại banner tự xuống dòng, nút "Xem ngay" full-width.
+
+5 APP MỚI THÊM LẦN NÀY:
+  Cốc Cốc TV         | Trình duyệt TV  | tv       | coccoc.apk
+  Projectivy Launcher| Launcher        | tv       | project.apk
+  VTV Prime          | Xem TV          | tv       | vtvprime.apk
+  Imou Camera        | Camera          | android  | imou.apk
+  Dọn dẹp RAM        | Tools           | tools    | d.n.d.p.ram.apk
+
+DANH SÁCH 19 APP TRÊN TRANG (mảng "const apps" gần cuối file):
+
+  Tên app          | Nhãn nhỏ        | Danh mục | File APK trên Releases
+  -----------------+-----------------+----------+------------------------------------
+  Stube            | Android Phone   | android  | Stube_1.2_universal.apk   (MỚI, thẻ lớn)
+  SIRO-TV          | Android TV      | tv       | SIRO-ATV.apk
+  TizenTube        | Samsung Tizen TV| tv       | TizenYoutube.1.0.8.ok.apk (v1.0.8)
+  TizenTube Cobalt | Samsung Tizen TV| tv       | cobalt-arm64.apk
+  SmartTube        | Android TV      | tv       | smarttube.apk
+  Cốc Cốc TV       | Trình duyệt TV  | tv       | coccoc.apk
+  Projectivy Launcher| Launcher      | tv       | project.apk
+  VTV Prime        | Xem TV          | tv       | vtvprime.apk
+  SIRO-TV          | Android Phone   | android  | SIRO-TV.apk
+  VApp             | Xem TV          | android  | vapp.apk
+  Giọng nói Kiki   | Android         | android  | kiki.apk
+  Imou Camera      | Camera          | android  | imou.apk
+  SIRO-VPN         | VPN             | vpn      | SIRO-VPN.apk
+  1.1.1.1          | VPN             | vpn      | 1.1.1.1.apk   (Cloudflare WARP)
+  Get Out          | Android         | tools    | getout.apk
+  Ferrari Downloader| Downloader     | tools    | ferrari.apk
+  Dọn dẹp RAM      | Tools           | tools    | d.n.d.p.ram.apk
+  MStore           | Store           | tools    | mstore.apk
+  Super Voice      | Voice           | tools    | SuperOK.1.5.apk (v1.5)
+
+Ghi chú:
+- File tizenyoutube.apk cũ vẫn không dùng (xóa được nếu muốn).
+- Mỗi app có icon SVG riêng vẽ theo chức năng. Không cần file ảnh ngoài.
+- Logo góc trái: "Sơn Sirô" + ô "S" gradient xanh lá.
+
+CÁCH ĐƯA LÊN WEB
+----------------
+1. Vào repo: https://github.com/Sonsiro/sonsiro.github.io
+2. Mở file index.html → bấm Edit (biểu tượng bút chì).
+3. Copy TOÀN BỘ nội dung file index.html trong zip này
+   dán đè lên nội dung cũ → Commit changes.
+4. Upload file assets/appstore-logo.png vào thư mục assets/ trên repo
+   (Add file → Upload files → kéo thả file → Commit). BẮT BUỘC,
+   nếu thiếu logo hero sẽ bị vỡ.
+5. Chờ GitHub Pages deploy (~1 phút) rồi mở lại
+   https://sonsiro.github.io kiểm tra.
+
+Lưu ý: file apps.js trong repo hiện KHÔNG được index.html dùng.
